@@ -1,0 +1,23 @@
+<div class="search">
+  <input 
+    type="text" 
+    placeholder="Search products..." 
+    [(ngModel)]="searchTerm" 
+    (input)="onSearch()" 
+  />
+</div>
+
+
+<div class="product-list">
+  <div *ngFor="let product of filteredProducts" class="product-item">
+    <div class="product-content">
+      <img [src]="product.image" alt="{{ product.name }}" />
+      <h2>{{ product.name }}</h2>
+      <p class="product-price">Price: ₾{{ product.price }}</p>
+    </div>
+    <div class="product-overlay">
+      <button (click)="addToCart(product)">Add to Cart</button>
+      <a [routerLink]="['/product', product.id]" class="view-details">View Details</a>
+    </div>
+  </div>
+</div>
